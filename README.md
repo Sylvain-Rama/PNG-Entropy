@@ -39,9 +39,13 @@ Main_Entropy_Module.py:
 
 Main Module to calculate Entropy by the direct way with correction of the sampling bias. This is needed by the two previous scripts.
 
+BatchSaveAsPNG.py:
+
+This script will convert csv or abf files to PNG, save a direct file and a transposed copy and log the file sizes in a Pandas dataframe.
+
 GenerateRandomNoise.py:
 
-This will create Gaussian White noise and sort it or not. Then save it as a csv, for later analyze of Hs & Hn.
+This will create Gaussian White noise and sort it or not. Then save it as a csv, for later analyze of Hs & Hn or save it as PNG.
 
 Labview Scripts were made using Labview 2017 and Vision 2017.
 
