@@ -41,7 +41,7 @@ Main Module to calculate Entropy by the direct way with correction of the sampli
 
 BatchSaveAsPNG.py:
 
-This script will convert csv or abf files to PNG, save a direct file and a transposed copy and log the file sizes in a Pandas dataframe.
+This script will convert csv or abf files to PNG, save a direct file and a transposed copy and log the PNG Rates (file sizes divided by the number of pixels in the image) in an Excel file.
 
 GenerateRandomNoise.py:
 
