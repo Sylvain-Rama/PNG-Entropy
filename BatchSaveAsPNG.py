@@ -36,7 +36,7 @@ root.overrideredirect(True)
 root.geometry('0x0+0+0')
 root.focus_force()
 
-initial_folder = "D:\Papiers\PNG & Entropy\Fig1"
+initial_folder = "E:/"
 FT = [("All files", "*.*"), ("Abf files", "*.abf"), 
       ("Excel files", "*.xlsx"), ("CSV files", "*.csv")]
 
@@ -47,15 +47,16 @@ file_paths = filedialog.askopenfilenames(parent=root, title=ttl, filetypes=FT, i
 root.withdraw()
 
 
-# Preparing names and all for the dataframe.
-size_values = np.zeros((2, len(file_paths)))
-sizes_df = pd.DataFrame(size_values)
+# Preparing names  for the dataframe.
+rates_values = np.zeros((2, len(file_paths)))
+rates_df = pd.DataFrame(rates_values)
 names = []
-for paths in np.arange(0, len(file_paths), 1):
-    names.append(os.path.basename(os.path.normpath(file_paths[paths])))
+size = 1 # Default length of the signal is 1, to prevent divide-by-zero error.
+for paths in file_paths:
+    names.append(os.path.basename(os.path.normpath(paths)))
 
-sizes_df.columns = names
-sizes_df.index = ['Size of the file1', 'Size of the File2']
+rates_df.columns = names
+rates_df.index = ['PNG Rate 1', 'PNG Rate 2']
 
 #%% Main loop for each selected file.
 for i in range(len(file_paths)):
@@ -97,7 +98,7 @@ for i in range(len(file_paths)):
     
     noisy_signals_transposed =  noisy_signals.transpose().copy()
     
-      
+    size = np.prod(np.shape(noisy_signals))  
     name = os.path.splitext(split[1])[0]
     png_name = os.path.join(split[0], name +'.png')
     
@@ -111,11 +112,11 @@ for i in range(len(file_paths)):
         png.from_array(png_array, mode="L").save(png_name)
         
         # size = os.path.getsize(png_name)
-        sizes_df.iloc[j, i] = os.path.getsize(png_name)
+        rates_df.iloc[j, i] = os.path.getsize(png_name) / size
 
 
 #%% Saving the final results as ax Excel sheet
-xls_name = os.path.join(split[0], 'File_sizes.xlsx')        
+xls_name = os.path.join(split[0], 'File_png_rates.xlsx')        
 with pd.ExcelWriter(xls_name) as writer:  
-        sizes_df.to_excel(writer, sheet_name='PNG Sizes', index=False)
+        rates_df.to_excel(writer, sheet_name='PNG Rates', index=True)
         
