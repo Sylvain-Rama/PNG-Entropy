@@ -47,8 +47,8 @@ GenerateRandomNoise.py:
 
 This will create Gaussian White noise and sort it or not. Then save it as a csv, for later analyze of Hs & Hn or save it as PNG.
 
-PNG_Entropy.llb: 
+PNG_Scripts.llb: 
 
 series of Labview scripts made using Labview 2017 and Vision 2017.
 
-They are mainly used for figures 2B, 3C and 4B. See the top level vi in the llb for description.
+They are used for figures 2, 3, 4, 5 and 6. See the top level vi in the llb for description.
