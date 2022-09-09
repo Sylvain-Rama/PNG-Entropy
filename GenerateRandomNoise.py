@@ -32,14 +32,14 @@ duration = 100
 sampling = 1
 spread = 4 # Amplitude of the noise
 repetitions = 100
-sorted_signal = 'False' #Choose "True" for sorting the signal
+sorted_signal = False #Choose True for sorting the signal
 name = 'Noise'
 
 length = int(duration / sampling)
 
 np.random.seed(0) # Change seed or remove
 raw = np.random.randint(spread, size = length * repetitions, dtype='int')
-if sorted_signal == 'True':
+if sorted_signal:
     raw = np.sort(raw)
     name='Sorted'
 noisy_signals = raw.reshape(length, repetitions) # Reshaping the signal as [duration , repetitions]
