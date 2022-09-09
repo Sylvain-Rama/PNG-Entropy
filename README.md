@@ -11,7 +11,7 @@ Mickael Zbili(1), Sylvain Rama(2)*
 
 2, UCL Queen Square Institute of Neurology, University College London, London, United Kingdom.
 
-*, Correspondence: Sylvain Rama, s.rama@ucl.ac.uk
+*, Correspondence: Sylvain Rama, rama.sylvain@gmail.com
 
 
 List of Python scripts:
